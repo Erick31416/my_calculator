@@ -48,12 +48,12 @@ git diff (--catched |--staged ) [color] [<files>]
 
 ## Imagen vs contenedores:
 - Un contenedor es una instancia de una imagen.
-### Instalando :
-Existen dos versiones de dokker yo estoy viendo un manual de comunity.
+## Instalando :
+- Existen dos versiones de dokker yo estoy viendo un manual de comunity.
 
-Como todos las aplicaciones hay tres canales de actualizacion: **Stable** . Test. Nightly.
+Como casi todas las aplicaciones hay tres canales de actualizacion: **Stable** . Test. Nightly.
 
-### probando:
+## probando:
 ejecutando : ' docker run hello-world' 
 obtendras:
 ```
@@ -81,50 +81,84 @@ obtendras:
 
 para meterte dentro de un contenedor :
 
-docker run -it ubuntu bash
+`docker run -it ubuntu bash`
+
+`docker run -it <contenedor> <comando>`
 	
 ## GESTIONAR IMAGENES DOCKER.
 
-		docker hub.[existe]
-		# docker image --help #->ayuda
-		build -> costruir tus propias imágenes 
-		history -> historya de una imagen en cocreto.
-		inspect -> detalles y entrañas de una imagen.
-		# docker image ls -> te muestra todas las imágenes que tienes descargadas
-		prune -> borra las imagnes que no estes utilizando.
-		# docker image pull ubunto -> te permite descargar una imagen de un repositorio.
-		push permite subir una imagen a un repositorio.
-		# docker rmi <nombre de la imagen> pra borrar una imagen
-		-----
-		# si te descargas una imagen que sea como : doker pull ubuntu, es oficial
-		# si te cescargas una imagen como docker pull bliztone/baseimage son imagenes que han creado otras personas.
-	Gestionado contenedores con docker.
-		# docker container --help
-		--
-		[lo mismo es :] docker container run blitznote/baseimage
-		#[lo mismo es :] docker run blitznote/baseimage
-		---
-		[lo mismo es :] docker ps 
-		[lo mismo es :] docker container ls.
-		#docker ps -a -> para ver todos los contenedores parados
-		----
-		#docker run -d --name ejemplo blitznote/baseimage -> para poner nombre a un contenedor.
-		#docker -d run blitznote/baseimage sleep 100
-		#con -d puedes hacer cosas, sin -d de bloquea el terminal.
-		#sleep 100 es el comando que ejecutara el contenedor.
-		#docker stop 1e0e92b8255e para parar el contenedor
-		#tambien tienes docker kill , docker restart , docker pause docker unpause
-		---
-		docker cp archivo.txt midocker:. esto copia el archivo archivo.txt al docker llamado midocker, a la ruta  /
-		docker cp midocker:archivo2.txt . esto copia el archivo del docker a fuera del docker
+docker hub.[existe]
 
-		ahora toca esto :https://www.atareao.es/tutorial/docker/ejecutar-contenedores-docker/ #la-solución-no-deseable
+docker image --help #->ayuda
+
+build -> costruir tus propias imágenes 
+
+history -> historial de una imagen en cocreto.
+
+inspect -> detalles y entrañas de una imagen.
+
+docker image ls -> te muestra todas las imágenes que tienes descargadas
+
+prune -> borra las imagnes que no estes utilizando.
+
+docker image pull ubuntu -> te permite descargar una imagen de un repositorio.
+
+push permite subir una imagen a un repositorio.
+
+docker rmi <nombre de la imagen> pra borrar una imagen
+
+
+si te descargas una imagen que sea como : doker pull ubuntu, es oficial
+
+si te cescargas una imagen como docker pull bliztone/baseimage son imagenes que han creado otras personas.
+
+##Gestionado contenedores con docker.
+
+# docker container --help
+
+[lo mismo es :] docker container run blitznote/baseimage
+
+#[lo mismo es :] docker run blitznote/baseimage
+
+---
+
+[lo mismo es :] docker ps 
+
+[lo mismo es :] docker container ls.
+
+#docker ps -a -> para ver todos los contenedores parados
+
+----
+
+#docker run -d --name ejemplo blitznote/baseimage -> para poner nombre a un contenedor.
+
+#docker -d run blitznote/baseimage sleep 100
+
+#con -d puedes hacer cosas, sin -d de bloquea el terminal.
+
+#sleep 100 es el comando que ejecutara el contenedor.
+
+#docker stop 1e0e92b8255e para parar el contenedor
+
+#tambien tienes docker kill , docker restart , docker pause docker unpause
+
+---
+
+docker cp archivo.txt midocker:. esto copia el archivo archivo.txt al docker llamado midocker, a la ruta  /
+
+docker cp midocker:archivo2.txt . esto copia el archivo del docker a fuera del docker
+
+
+ahora toca esto :https://www.atareao.es/tutorial/docker/ejecutar-contenedores-docker/ #la-solución-no-deseable
 
 ## EJECUTAR CONTENEDORES DOCKER
 
 Atareao, aconseja utilizar Bash-it . {https://www.atareao.es/software/utilidades/bash-it/} [https://www.atareao.es/software/utilidades/bash-it/] pero para no perderme en las profundidades, de los hipertextos, voy a pasar mucho del tema de momento.
-Atareao aconseja hacer las pruebas con un centenedor de Nginx sobre Alpine, 
+
+Atareao aconseja hacer las pruebas con un contenedor de Nginx sobre Alpine.
+
 Alpine es una distribucion linux enfocada a la simplicidad, eficiendia de recursos y seguridad.
+
 Atareao se vuelve a liar y me manda estos dos links que pueden estar muy intereseantes:
 https://www.atareao.es/tutorial/raspberry-pi-primeros-pasos/
 https://www.atareao.es/tutorial/raspberry-pi-primeros-pasos/infraestructura-lemp-con-nginx-en-raspberry/
@@ -133,8 +167,30 @@ https://www.atareao.es/tutorial/raspberry-pi-primeros-pasos/infraestructura-lemp
 - ps -ef
 - docker run -d --name test01 -p 81:80 nginx:alpine
 - docker run -d --name test01 -p 80:80 -p 443:443 nginx:alpine
+- mover archivos dentro y fuera del contenedor [ docker cp nginx-selfsigned.key test01:/ ]
 - exponer el puerto 443 del contenedor permite acceder mediante https:
-- certificados autofirmados 
-Aqui hay mucha tela que cortar, me he quedado bloqueado con un problema en los certificados.
-# Buscar: certificados https, configuracion de servidor engins arquitectura lemp... 
+- certificados autofirmados [los navegadores no los cosideran seguros, si cualquiera se los puede firmas a si mismo.. ¿que demuestran? esto "solo" sirve para aprender]
+- exponer volumenes: igual que puedes redirigir de un puerto a otro, puedes redirigir de una direcion del contenedor a una direccion del equipo, asi te ahorras crear un contenedor nuevo cada vez.
 
+		docker run \
+		-d -p  80:80 \
+		-p 443:443 \
+		-v "$(pwd)"/crt:/etc/ssl/certs \
+		-v "$(pwd)"/conf:/etc/nginx/conf.d \
+		-v "$(pwd)"/web:/var/www/html \
+		--name test01 atareao/nginx:autocertificado
+- si tienes un contenedor y no sabes que volumenes tienes espuestos:
+
+		Puedes inspeccionar el contenedor con:
+		docker inspect test01
+
+		Te saldrá un extenso JSON. Busca la sección "Mounts"
+
+		Si tienes instalado jq (una herramienta para extraer información de JSON desde línea de comandos usando un lenguaje propio para la consulta) puedes utilizarlo en la siguiente forma:
+
+		docker inspect test01 | jq '.[].Mounts[]| "\(.Source):\(.Destination)"'
+		y te imprimirá algo del estilo:
+
+		/home/foo/folder/crt:/etc/ssl/certs
+		/home/foo/folder/conf:/etc/nginx/conf.d
+		/home/foo/folder/web:/var/www/html
