@@ -8,29 +8,36 @@ la proxima vez puedes subir esto a git.
 El objetivo es tener unos apuntes en github organizados por temas, con indices, destilados , pocillos....
 
 Un destilado no puede tener mas de 12 puntos.
+
+<elemento> | <elementos>
+[opcional] (ouno|uotro)
+git diff (--catched |--staged ) [color] [<files>]
+▼ pierde importancia
+▲ gana importancia
+🌓︎ contrastar, repasar , comprobar, poner en duda
 ```
  
 # CONTENEDORES 
 
 ## **Desitilado**
 
-1. **docker run hello-world** -> baja una imagen y ejecuta un contenedor.
-2. **docker run -it ubuntu bash** -> se mete dentro de un conteidor y ejecuta el comando bash.
-3. `docker image` --help
-4. dockerhub -> recuerda que existe ▼
-5. docker container --help
-6. docker image ls -> te muestra todas las imágenes que tienes descargadas
-7. docker image pull ubuntu -> te permite descargar una imagen de un repositorio.
-8. docker rmi \<nombre de la imagen\> para **borrar** una imagen
-9. Las imágenes tipo : _doker pull ubuntu_ es oficial y Las imágenes tipo: _docker pull bliztone/baseimage_ son imagenes no oficiales.
-10. docker stop 1e0e92b8255e para parar el contenedor
-11. tambien tienes docker kill , docker restart , docker pause docker unpause
-12. docker cp archivo.txt midocker:. esto copia el archivo archivo.txt al docker llamado midocker, a la ruta  /
-- docker cp midocker:archivo2.txt . esto copia el archivo del docker a fuera del docker
-- docker ps 
-  - docker ps -a -> para ver todos los contenedores parados
-- docker run -d --name ejemplo blitznote/baseimage -> para poner nombre a un contenedor.
-- docker -d run blitznote/baseimage sleep 100
+1. `docker run hello-world` -> baja una imagen y ejecuta un contenedor.
+1. `docker run -it ubuntu bash` -> se mete dentro de un conteidor y ejecuta el comando bash.
+1. `docker image|container  --help`
+1. ▼ dockerhub -> recuerda que existe 
+1. ▲ `docker image ls` -> te muestra todas las imágenes que tienes descargadas
+1. `docker image pull ubuntu` -> te permite descargar una imagen de un repositorio.
+1. `docker rmi <nombre_imagen>` para **borrar** una imagen
+1. Las imágenes tipo : `doker pull ubuntu` son oficiales y Las imágenes tipo: `docker pull bliztone/baseimage` son imagenes no oficiales.
+1. `docker stop 1e0e92b8255e` para parar el contenedor
+1. tambien tienes docker kill , docker restart , docker pause docker unpause
+1. `docker cp archivo.txt midocker:. ` esto copia el archivo archivo.txt al docker llamado midocker, a la ruta  /
+1. `docker rm test01` para borrar el contenedor test01 🌓︎->primero hay que pararlo.
+- `docker cp midocker:archivo2.txt .` esto copia el archivo del docker a fuera del docker
+- `docker ps` 
+  - ▲▲`docker ps -a` -> para ver todos los contenedores parados
+- 🌓︎ `docker run -d --name <nombre_nuevo>` ejemplo blitznote/baseimage -> para poner nombre a un contenedor.
+- `docker -d run blitznote/baseimage sleep 100`
   - -d hace que el contenedor se ejecute en segundo plano asi puedes hacer cosas, sin -d de bloquea el terminal.
   - sleep 100 es el comando que ejecutara el contenedor.
 - docker commit test01 atareao/nginx:autocertificado
