@@ -21,11 +21,11 @@ git diff (--catched |--staged ) [color] [<files>]
 
 ## **Desitilado**
 
-1. `docker run hello-world` -> baja una imagen y ejecuta un contenedor.
-1. `docker run -it ubuntu bash` -> se mete dentro de un conteidor y ejecuta el comando bash.
+1. `docker run hello-world` -> baja crea y arranca un contenedor a parir de la imagen hello-world.
+1. `docker run -it ubuntu bash` -> run (crea y arranca a partir de una imagen) -i de interactive , t de terminal
 1. `docker image|container  --help`
-1. ▼ dockerhub -> recuerda que existe 
 1. ▲ `docker image ls` -> te muestra todas las imágenes que tienes descargadas
+1. ▼ dockerhub -> recuerda que existe 
 1. `docker image pull ubuntu` -> te permite descargar una imagen de un repositorio.
 1. `docker rmi <nombre_imagen>` para **borrar** una imagen
 1. Las imágenes tipo : `doker pull ubuntu` son oficiales y Las imágenes tipo: `docker pull bliztone/baseimage` son imagenes no oficiales.
