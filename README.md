@@ -1,5 +1,5 @@
 ```
-Notas para aprovechar estos apuntes.
+Notas para aprovechar estos apuntes.  
 Cada vez que los retomes repasa y simplifica el destilado
 y al ser estos unos apuntes a largo plazo , crea un pocillo.
 
